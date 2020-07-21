@@ -1,39 +1,53 @@
 
-/* adapted from http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+body {
+	--color1: #ed6a5aff;
+	--color2: #f4f1bbff;
+	--color3: #9bc1bcff;
+	--color4: #5d576bff;
+	--color5: #e6ebe0ff;
 
-*{
-    box-sizing: border-box;
+	background-color: var(--color2);
 }
 
-html, body {
-    height: 100%;
-    width: 100%;
+img {
+	width: 200px;
+	height: 200px;
 }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+li {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	list-style-type: none;
+	border: 2px solid var(--color1);
+	margin: 5px;
+	background-color: var(--color4);;
 }
 
-ol, ul {
-	list-style: none;
+h3 {
+	font-size: 24px;
+	color: var(--color5);
+}
+
+p {
+	color: var(--color5);
+}
+
+ul {
+	width: 1200px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+}
+.data-Div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	margin: 10px;
 }

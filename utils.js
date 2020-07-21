@@ -1,4 +1,4 @@
-
+import { rawData } from './pokemon.js';
 
 // function for getting random numbers between 0 and remaining pokemon length. whole numbers
 export function getRandomPokemon(pokemonArray) {
@@ -57,5 +57,18 @@ export function getPokemonData(){
 export function addPokemonData(data) {
     const stringyData = JSON.stringify(data);
     localStorage.setItem('DATA', stringyData);
+}
+
+export function getAllPokemon() {
+    let pokemon = localStorage.getItem('POKEMON');
+
+    if (!pokemon) {
+        pokemon = JSON.stringify(rawData);
+
+        localStorage.setItem('POKEMON', pokemon);
+    }
+
+    const parsedData = JSON.parse(pokemon);
+    return parsedData;
 }
 

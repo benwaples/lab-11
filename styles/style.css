@@ -121,3 +121,13 @@ footer {
 .hidden {
     display: none
 }
+
+input {
+    display: none;
+}
+input:hover +img {
+    border: 3px solid var(--color1);
+    border-radius: 15px;
+    opacity: .7;
+}
+

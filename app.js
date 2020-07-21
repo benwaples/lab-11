@@ -128,7 +128,9 @@ nextButton.addEventListener('click', () => {
     nextButton.classList.add('hidden');
 });
 
-
+seeResultsButton.addEventListener('click', () => {
+    window.location = './results/index.html';
+});
 
 
 //set event listeners to update state and DOM

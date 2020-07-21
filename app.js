@@ -3,7 +3,8 @@ import {
     getRandomPokemon, 
     findById,
     getPokemonData,
-    addPokemonData
+    encounteredPokemon,
+    capturedPokemon
 } from './utils.js';
 
 // import functions and grab DOM elements
@@ -21,19 +22,19 @@ let countCaptures = 10;
 resetPage();
 
 function resetPage() {
-    
+    const data = getPokemonData();
+
     const pokemonPackage1 = getRandomPokemon(remainingPokemon);
     const randomPokemon1 = pokemonPackage1[1];
-    // checkEncountered(randomPokemon1, encounteredPokemon);
+    encounteredPokemon(data, randomPokemon1.id);
 
     const pokemonPackage2 = getRandomPokemon(pokemonPackage1[0]);
     const randomPokemon2 = pokemonPackage2[1];
-    // checkEncountered(randomPokemon2, encounteredPokemon);
+    encounteredPokemon(data, randomPokemon2.id);
 
     const pokemonPackage3 = getRandomPokemon(pokemonPackage2[0]);
     const randomPokemon3 = pokemonPackage3[1];
-    // checkEncountered(randomPokemon3, encounteredPokemon);
-    // debugger
+    encounteredPokemon(data, randomPokemon3.id);
 
     const pokemonLabels = document.querySelectorAll('label');
     const pokemon1Label = pokemonLabels[0];
@@ -46,9 +47,11 @@ function resetPage() {
     pokemon1Input.addEventListener('click', selectedPokemon);
     const pokemon1img = pokemon1Label.children[1];
     pokemon1img.src = randomPokemon1.url_image;
-    // const encounteredSpan1 = pokemon1Label.children[2];
-    // const encounteredThis1 = findById(encounteredPokemon, randomPokemon1.id).seen;
-    // encounteredSpan1.textContent = `Encounters: ${encounteredThis1}`;
+    const encounteredSpan1 = pokemon1Label.children[2];
+    const capturedSpan1 = pokemon1Label.children[3];
+    const thisData1 = findById(data, randomPokemon1.id);
+    encounteredSpan1.textContent = `Encounters: ${thisData1.encounter}`;
+    capturedSpan1.textContent = `Captured: ${thisData1.captured}`;
 
     //add the pokemon 2 to page
     const pokemon2Input = pokemon2Label.children[0];
@@ -56,9 +59,11 @@ function resetPage() {
     pokemon2Input.addEventListener('click', selectedPokemon);
     const pokemon2img = pokemon2Label.children[1];
     pokemon2img.src = randomPokemon2.url_image;
-    // const encounteredSpan2 = pokemon2Label.children[2];
-    // const encounteredThis2 = findById(encounteredPokemon, randomPokemon2.id).seen;
-    // encounteredSpan2.textContent = `Encounters ${encounteredThis2}`;
+    const encounteredSpan2 = pokemon2Label.children[2];
+    const capturedSpan2 = pokemon2Label.children[3];
+    const thisData2 = findById(data, randomPokemon2.id);
+    encounteredSpan2.textContent = `Encounters: ${thisData2.encounter}`;
+    capturedSpan2.textContent = `Captured: ${thisData2.captured}`;
 
     //add the pokemon 3 to page
     const pokemon3Input = pokemon3Label.children[0];
@@ -66,9 +71,11 @@ function resetPage() {
     pokemon3Input.addEventListener('click', selectedPokemon);
     const pokemon3img = pokemon3Label.children[1];
     pokemon3img.src = randomPokemon3.url_image;
-    // const encounteredSpan3 = pokemon3Label.children[2];
-    // const encounteredThis3 = findById(encounteredPokemon, randomPokemon3.id).seen;
-    // encounteredSpan3.textContent = `Encounters ${encounteredThis3}`;
+    const encounteredSpan3 = pokemon3Label.children[2];
+    const capturedSpan3 = pokemon3Label.children[3];
+    const thisData3 = findById(data, randomPokemon3.id);
+    encounteredSpan3.textContent = `Encounters: ${thisData3.encounter}`;
+    capturedSpan3.textContent = `Captured: ${thisData3.captured}`;
 
     pokemon1Input.disabled = false;
     pokemon2Input.disabled = false;
@@ -80,22 +87,10 @@ function resetPage() {
 function selectedPokemon(e) {
     countCaptures--;
     
-    const thisPokemon = e.target.value;
+    const thisPokemon = Number(e.target.value);
 
     const data = getPokemonData();
-    const trackingPokemon = findById(remainingPokemon, Number(thisPokemon));
-
-    if (!trackingPokemon) {
-        const initialPokemon = {
-            id: thisPokemon.id,
-            captured: 1,
-        };
-        data.push(initialPokemon);
-    } else {
-        trackingPokemon.captured ++;
-    }
-
-    addPokemonData(data);
+    capturedPokemon(data, thisPokemon);
     
     if (countCaptures === 0) {
         alert('you\'re all out of pokeballs! Go to the next page to see your stats');

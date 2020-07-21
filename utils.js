@@ -20,10 +20,32 @@ export function findById(someArray, someId) {
     }
 }
 
-//function for adding a selected pokemon to a new array
+//function for adding a captured pokemon to a new array
 
+export function capturedPokemon(dataArray, capturedPokemon) {
+    const trackingPokemon = findById(dataArray, capturedPokemon);
+
+    trackingPokemon.captured ++;
+
+    addPokemonData(dataArray);
+}
 //function for keeping count which pokemon have been shown and how many times.. Think incrementing the quantity
+export function encounteredPokemon(dataArray, seenPokemon) {
+    const trackingPokemon = findById(dataArray, seenPokemon);
+    if (!trackingPokemon) {
+        const initialPokemon = {
+            id: seenPokemon,
+            captured: 0,
+            encounter: 1
+        };
+        dataArray.push(initialPokemon);
+    } else {
+        trackingPokemon.encounter ++;
+    }
+    addPokemonData(dataArray);
+}
 
+//function for getting data from storage
 export function getPokemonData(){
     const initialEmpty = '[]';
     const rawData = localStorage.getItem('DATA') || initialEmpty;

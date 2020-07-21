@@ -125,9 +125,14 @@ footer {
 input {
     display: none;
 }
-input:hover +img {
+
+.faded {
+    opacity: .5; 
+    cursor: not-allowed;
     border: 3px solid var(--color1);
     border-radius: 15px;
     opacity: .7;
 }
+
+
 

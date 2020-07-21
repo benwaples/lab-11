@@ -1,8 +1,12 @@
 // function for getting random numbers between 0 and remaining pokemon length. whole numbers
 export function getRandomPokemon(pokemonArray) {
-    const randomPokeIndex = Math.floor(Math.random() * pokemonArray.length);
-
-    return pokemonArray[randomPokeIndex];
+    let copyOfArray = pokemonArray.slice();
+    const randomPokeIndex = Math.floor(Math.random() * copyOfArray.length);
+    const positionOneAhead = Number(randomPokeIndex) + 1;
+    copyOfArray.splice(randomPokeIndex, positionOneAhead);
+    const pokemonPackage = [copyOfArray, pokemonArray[randomPokeIndex]];
+    // debugger
+    return pokemonPackage;
 }
 
 //find by id

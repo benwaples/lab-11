@@ -5,15 +5,17 @@ export function getRandomPokemon(pokemonArray) {
     const positionOneAhead = Number(randomPokeIndex) + 1;
     copyOfArray.splice(randomPokeIndex, positionOneAhead);
     const pokemonPackage = [copyOfArray, pokemonArray[randomPokeIndex]];
-    // debugger
     return pokemonPackage;
 }
 
 //find by id
 export function findById(someArray, someId) {
     for (let i = 0; i < someArray.length; i ++) {
-        if (someArray[i].id === someId && Array.isArray(someArray))
+        if (someArray[i].id === someId && Array.isArray(someArray)){
             return someArray[i];
+        } else {
+            false;
+        }
     }
 }
 

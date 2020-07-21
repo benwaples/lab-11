@@ -15,6 +15,7 @@ let capturedPokemon = [];
 let encounteredPokemon = [];
 let countCaptures = 10;
 
+resetPage();
 
 function resetPage() {
     
@@ -31,13 +32,13 @@ function resetPage() {
     for (let i = 0; i < thisSetOfPokemon.length; i++) {
         const thisPokemon = thisSetOfPokemon[i];
         const encounter = findById(encounteredPokemon, thisPokemon.id);
-
+        
         if (!encounter) {
             const initializePokemon = {
                 id: thisPokemon.id,
                 seen: 1
             };
-
+            
             encounteredPokemon.push(initializePokemon);
         } else {
             thisPokemon.seen++;
@@ -57,6 +58,8 @@ function resetPage() {
     pokemon1Input.addEventListener('click', selectedPokemon);
     const pokemon1img = pokemon1Label.children[1];
     pokemon1img.src = randomPokemon1.url_image;
+    const pokemon1Encountered = pokemon1Label.children[2];
+    pokemon1Encountered.textContent = findById(encounteredPokemon, randomPokemon1.id).seen;
 
     //add the pokemon 2 to page
     const pokemon2Input = pokemon2Label.children[0];
@@ -64,6 +67,8 @@ function resetPage() {
     pokemon2Input.addEventListener('click', selectedPokemon);
     const pokemon2img = pokemon2Label.children[1];
     pokemon2img.src = randomPokemon2.url_image;
+    const pokemon2Encountered = pokemon2Label.children[2];
+    pokemon2Encountered.textContent = findById(encounteredPokemon, randomPokemon2.id).seen;
 
     //add the pokemon 3 to page
     const pokemon3Input = pokemon3Label.children[0];
@@ -71,6 +76,8 @@ function resetPage() {
     pokemon3Input.addEventListener('click', selectedPokemon);
     const pokemon3img = pokemon3Label.children[1];
     pokemon3img.src = randomPokemon3.url_image;
+    const pokemon3Encountered = pokemon3Label.children[2];
+    pokemon3Encountered.textContent = findById(encounteredPokemon, randomPokemon3.id).seen;
 
     pokemon1Input.disabled = false;
     pokemon2Input.disabled = false;
@@ -79,13 +86,12 @@ function resetPage() {
     
 }
 
-resetPage();
-
 function selectedPokemon(e) {
     seeResultsButton.parentElement.classList.remove('hidden');
     countCaptures--;
     
     const thisPokemon = e.target.value;
+    // debugger
     const pokemonIndex = findById(remainingPokemon, thisPokemon);
     
     const addToCaptured = remainingPokemon.splice(pokemonIndex, 1);
@@ -93,6 +99,7 @@ function selectedPokemon(e) {
     capturedPokemon.push(addToCaptured);
     
     if (countCaptures === 0) {
+        alert('you\'re all out of pokeballs! Go to the next page to see your stats');
         seeResultsButton.classList.remove('hidden');
         nextButton.classList.add('hidden');
     } else {
@@ -112,6 +119,7 @@ function selectedPokemon(e) {
     const pokemon3Label = pokemonLabels[2];
     const pokemon3Input = pokemon3Label.children[0];
     pokemon3Input.disabled = true;
+    // debugger
     
     
     remainingTriesSpan.textContent = countCaptures;

@@ -58,8 +58,9 @@ function resetPage() {
     pokemon1Input.addEventListener('click', selectedPokemon);
     const pokemon1img = pokemon1Label.children[1];
     pokemon1img.src = randomPokemon1.url_image;
-    const pokemon1Encountered = pokemon1Label.children[2];
-    pokemon1Encountered.textContent = findById(encounteredPokemon, randomPokemon1.id).seen;
+    const encounteredSpan1 = pokemon1Label.children[2];
+    const encounteredThis1 = findById(encounteredPokemon, randomPokemon1.id).seen;
+    encounteredSpan1.textContent = `Encounters: ${encounteredThis1}`;
 
     //add the pokemon 2 to page
     const pokemon2Input = pokemon2Label.children[0];
@@ -67,8 +68,9 @@ function resetPage() {
     pokemon2Input.addEventListener('click', selectedPokemon);
     const pokemon2img = pokemon2Label.children[1];
     pokemon2img.src = randomPokemon2.url_image;
-    const pokemon2Encountered = pokemon2Label.children[2];
-    pokemon2Encountered.textContent = findById(encounteredPokemon, randomPokemon2.id).seen;
+    const encounteredSpan2 = pokemon2Label.children[2];
+    const encounteredThis2 =findById(encounteredPokemon, randomPokemon2.id).seen;
+    encounteredSpan2.textContent = `Encounters ${encounteredThis2}`;
 
     //add the pokemon 3 to page
     const pokemon3Input = pokemon3Label.children[0];
@@ -76,8 +78,9 @@ function resetPage() {
     pokemon3Input.addEventListener('click', selectedPokemon);
     const pokemon3img = pokemon3Label.children[1];
     pokemon3img.src = randomPokemon3.url_image;
-    const pokemon3Encountered = pokemon3Label.children[2];
-    pokemon3Encountered.textContent = findById(encounteredPokemon, randomPokemon3.id).seen;
+    const encounteredSpan3 = pokemon3Label.children[2];
+    const encounteredThis3 = findById(encounteredPokemon, randomPokemon3.id).seen;
+    encounteredSpan3.textContent = `Encounters ${encounteredThis3}`;
 
     pokemon1Input.disabled = false;
     pokemon2Input.disabled = false;

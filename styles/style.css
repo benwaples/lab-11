@@ -99,5 +99,6 @@ input {
     opacity: .7;
 }
 
-
-
+input:hover +img {
+    border: solid red 2px;
+}

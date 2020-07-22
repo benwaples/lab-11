@@ -12,6 +12,7 @@ const remainingTriesSpan = document.querySelector('#remaining-tries');
 const pokemonDiv = document.querySelector('#pokemon-div');
 const nextButton = document.querySelector('#next');
 const seeResultsButton = document.querySelector('#see-results');
+const allImgs = document.querySelectorAll('label');
 
 
 // initialize state
@@ -113,19 +114,14 @@ function selectedPokemon(e) {
     const pokemon3Label = pokemonLabels[2];
     const pokemon3Input = pokemon3Label.children[0];
     pokemon3Input.disabled = true;
-    // debugger
-    
     
     remainingTriesSpan.textContent = countCaptures;
 }
 
 nextButton.addEventListener('click', () => {
     resetPage();
-
-    // console.log('remaining poke', remainingPokemon);
-
+    
     pokemonDiv.classList.remove('faded');
-    nextButton.classList.add('hidden');
 });
 
 seeResultsButton.addEventListener('click', () => {

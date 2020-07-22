@@ -12,7 +12,6 @@ const remainingTriesSpan = document.querySelector('#remaining-tries');
 const pokemonDiv = document.querySelector('#pokemon-div');
 const nextButton = document.querySelector('#next');
 const seeResultsButton = document.querySelector('#see-results');
-const allImgs = document.querySelectorAll('label');
 
 
 // initialize state

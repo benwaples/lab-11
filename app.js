@@ -1,10 +1,10 @@
-import { rawData } from './pokemon.js';
 import { 
     getRandomPokemon, 
     findById,
     getPokemonData,
     encounteredPokemon,
-    capturedPokemon
+    capturedPokemon,
+    getAllPokemon
 } from './utils.js';
 
 // import functions and grab DOM elements
@@ -16,7 +16,7 @@ const seeResultsButton = document.querySelector('#see-results');
 
 // initialize state
 
-let remainingPokemon = rawData.slice();
+let remainingPokemon = getAllPokemon();
 let countCaptures = 10;
 
 resetPage();
@@ -26,15 +26,15 @@ function resetPage() {
 
     const pokemonPackage1 = getRandomPokemon(remainingPokemon);
     const randomPokemon1 = pokemonPackage1[1];
-    encounteredPokemon(data, randomPokemon1.id);
+    encounteredPokemon(data, randomPokemon1.id, remainingPokemon);
 
     const pokemonPackage2 = getRandomPokemon(pokemonPackage1[0]);
     const randomPokemon2 = pokemonPackage2[1];
-    encounteredPokemon(data, randomPokemon2.id);
+    encounteredPokemon(data, randomPokemon2.id, remainingPokemon);
 
     const pokemonPackage3 = getRandomPokemon(pokemonPackage2[0]);
     const randomPokemon3 = pokemonPackage3[1];
-    encounteredPokemon(data, randomPokemon3.id);
+    encounteredPokemon(data, randomPokemon3.id, remainingPokemon);
 
     const pokemonLabels = document.querySelectorAll('label');
     const pokemon1Label = pokemonLabels[0];

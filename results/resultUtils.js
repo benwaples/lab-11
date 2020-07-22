@@ -63,12 +63,45 @@ export function mungedEncounter(someArray) {
     return newArray;
 }
 
-export function mungedNames(someArray) {
+export function mungedNames(someArray, baseArray) {
     const newArray = [];
     for (let i = 0; i < someArray.length; i++) {
-        const captured = someArray[i].name;
+        const captured = findById(baseArray, someArray[i].id);
+        const name = captured.pokemon;
 
-        newArray.push(captured);
+        newArray.push(name);
+        
     }
     return newArray;
 }
+
+function randomHexColor() {
+    const randomHex = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    
+    return randomHex;
+}
+
+export function mungedBarColors(someArray) {
+    const colorPackage = [];
+    const backgroundColor = [];
+    const borderColor = [];
+    const capturedBackground = [];
+
+    for (let i = 0; i < someArray.length; i++) {
+        const randomColor = randomHexColor();
+
+        const randomBackground = randomColor + '';
+        backgroundColor.push(randomBackground);
+
+        const complimentingBorder = randomColor + 'ff';
+        borderColor.push(complimentingBorder);
+        capturedBackground.push(complimentingBorder);
+    }
+
+    colorPackage.push(backgroundColor);
+    colorPackage.push(borderColor);
+    colorPackage.push(capturedBackground);
+
+    return colorPackage;
+}
+

@@ -30,13 +30,15 @@ export function capturedPokemon(dataArray, capturedPokemon) {
     addPokemonData(dataArray);
 }
 //function for keeping count which pokemon have been shown and how many times.. Think incrementing the quantity
-export function encounteredPokemon(dataArray, seenPokemon) {
+export function encounteredPokemon(dataArray, seenPokemon, originPokemon) {
+    const bigPokemonObject = findById(originPokemon, seenPokemon);
     const trackingPokemon = findById(dataArray, seenPokemon);
     if (!trackingPokemon) {
         const initialPokemon = {
             id: seenPokemon,
             captured: 0,
-            encounter: 1
+            encounter: 1,
+            color: bigPokemonObject.color_1
         };
         dataArray.push(initialPokemon);
     } else {
@@ -48,8 +50,8 @@ export function encounteredPokemon(dataArray, seenPokemon) {
 //function for getting data from storage
 export function getPokemonData(){
     const initialEmpty = '[]';
-    const rawData = localStorage.getItem('DATA') || initialEmpty;
-    const data = JSON.parse(rawData);
+    const rawPokemonTracker = localStorage.getItem('DATA') || initialEmpty;
+    const data = JSON.parse(rawPokemonTracker);
 
     return data;
 }

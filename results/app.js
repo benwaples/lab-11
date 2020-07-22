@@ -11,6 +11,7 @@ import {
 
 const capturedResults = document.querySelector('#captured-results');
 const encounteredResults = document.querySelector('#encountered-results');
+const clearButton = document.querySelector('#clear');
 
 
 //initialize
@@ -70,4 +71,9 @@ var myChart = new Chart (ctx, { //eslint-disable-line
             }]
         }
     }
+});
+
+clearButton.addEventListener('click', () => {
+    localStorage.removeItem('DATA');
+    window.location = '../index.html';
 });

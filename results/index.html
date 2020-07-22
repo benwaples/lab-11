@@ -15,21 +15,24 @@
 <body>
     <main>
         <div class="data-Div">
-            <h1>Captured List</h1>
+            <h1>Captured</h1>
             <ul id="captured-results">
             </ul>
         </div>
         <div class="data-Div">
-            <h1>Total Encountered List</h1>
+            <h1>Total Encountered</h1>
             <ul id="encountered-results">
             </ul>
         </div>
-        <div class="data-Div" id="chartSection">
-            <canvas id="myChart" width="600" height="600"></canvas>
-            <h1>Clear Session and go get pokemon again</h1>
-            <button id="clear">Clear</button>
+        <div id="bottom">
+            <div class="data-Div" id="chartSection">
+                <canvas id="myChart" width="700" height="400"></canvas>
+            </div>
+            <div class="data-Div" id="clearDiv">
+                <h2>Clear Session and go get pokemon again</h1>
+                <button id="clear">Clear</button>
+            </div>
         </div>
-
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script type="module" src="app.js"></script>
